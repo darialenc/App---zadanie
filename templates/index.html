@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Magazyn i Księgowość</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Stan magazynowy i aktualne saldo</h1>
+    <p><strong>Saldo:</strong> {{ saldo }} PLN</p>
+
+    <h2>Magazyn</h2>
+    <ul>
+        {% for nazwa, dane in magazyn.items() %}
+            <li>{{ nazwa }} - {{ dane.ilosc }} szt. - {{ dane.cena }} PLN</li>
+        {% else %}
+            <li>Brak produktów w magazynie.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Formularze</h2>
+
+    <form method="POST">
+        <h3>Zakup</h3>
+        <input type="hidden" name="action" value="zakup">
+        Nazwa: <input name="nazwa" required><br>
+        Cena: <input name="cena" type="number" step="0.01" required><br>
+        Ilość: <input name="ilosc" type="number" required><br>
+        <button type="submit">Zatwierdź zakup</button>
+    </form>
+
+    <form method="POST">
+        <h3>Sprzedaż</h3>
+        <input type="hidden" name="action" value="sprzedaz">
+        Nazwa: <input name="nazwa" required><br>
+        Cena: <input name="cena" type="number" step="0.01" required><br>
+        Ilość: <input name="ilosc" type="number" required><br>
+        <button type="submit">Zatwierdź sprzedaż</button>
+    </form>
+
+    <form method="POST">
+        <h3>Zmiana Salda</h3>
+        <input type="hidden" name="action" value="saldo">
+        Komentarz: <input name="komentarz" required><br>
+        Wartość: <input name="wartosc" type="number" step="0.01" required><br>
+        <button type="submit">Zmień saldo</button>
+    </form>
+
+    <p><a href="{{ url_for('historia') }}">Zobacz historię</a></p>
+</body>
+</html>

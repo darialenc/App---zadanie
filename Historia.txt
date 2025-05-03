@@ -1,0 +1,4 @@
+Saldo zmienione. Nowe saldo: 110000.0
+Zakup: koc, Ilosc: 50, Cena: 50.0, Stan konta: 107500.0
+Zakup: zeszyt, Ilosc: 100, Cena: 5.0, Stan konta: 107000.0
+Zapytanie o produkt: zeszyt

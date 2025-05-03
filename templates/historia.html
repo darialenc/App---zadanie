@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Historia Operacji</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Historia operacji (od {{ od }} do {{ do }})</h1>
+    <ul>
+        {% for wpis in historia %}
+            <li>{{ loop.index0 + od }}: {{ wpis }}</li>
+        {% else %}
+            <li>Brak historii w podanym zakresie.</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">← Powrót</a>
+</body>
+</html>
