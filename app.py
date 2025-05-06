@@ -70,15 +70,14 @@ manager = Manager()
 manager.assign("Saldo.txt", "Magazyn.txt", "Historia.txt")
 
 @app.route("/", methods=["GET", "POST"])
-def index():
+def main():
     if request.method == "POST":
         action = request.form.get("action")
 
         if action == "saldo":
-            komentarz = request.form.get("komentarz")
             wartosc = float(request.form.get("wartosc", 0))
             manager.saldo += wartosc
-            manager.historia.append(f"Saldo zmienione: {komentarz}, Wartość: {wartosc}")
+            manager.historia.append(f"Saldo zmienione: Wartość: {wartosc}")
             manager.save_saldo_to_file()
 
         elif action == "zakup":
@@ -113,9 +112,9 @@ def index():
 
         manager.save_magazyn_to_file()
         manager.save_historia_to_file()
-        return redirect(url_for("index"))
+        return redirect(url_for("main"))
 
-    return render_template("index.html", saldo=manager.saldo, magazyn=manager.magazyn)
+    return render_template("main.html", saldo=manager.saldo, magazyn=manager.magazyn)
 
 @app.route("/historia/")
 @app.route("/historia/<int:line_from>/<int:line_to>/")
