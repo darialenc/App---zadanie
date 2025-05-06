@@ -3,5 +3,3 @@ Zakup: koc, Ilosc: 50, Cena: 50.0, Stan konta: 107500.0
 Zakup: zeszyt, Ilosc: 100, Cena: 5.0, Stan konta: 107000.0
 Zapytanie o produkt: zeszyt
 Zakup: rower, 2 szt., cena 100.0
-Saldo zmienione: Wartość: 1000.0
-Saldo zmienione: Wartość: -1000.0

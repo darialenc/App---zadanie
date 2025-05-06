@@ -43,7 +43,7 @@ class Manager:
     def load_saldo_from_file(self, filepath):
         if not self.file_exists(filepath):
             return 0.0
-        with open(filepath, "r") as fd:
+        with open(filepath, "r", encoding="utf-8") as fd:
             content = fd.read().strip()
         return float(content) if content else 0.0
 
@@ -75,9 +75,10 @@ def main():
         action = request.form.get("action")
 
         if action == "saldo":
+            komentarz = request.form.get("komentarz")
             wartosc = float(request.form.get("wartosc", 0))
             manager.saldo += wartosc
-            manager.historia.append(f"Saldo zmienione: Wartość: {wartosc}")
+            manager.historia.append(f"Saldo zmienione: {komentarz}, Wartosc: {wartosc}")
             manager.save_saldo_to_file()
 
         elif action == "zakup":
